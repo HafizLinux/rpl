@@ -1,3 +1,23 @@
+<?php 
+  include 'config.php';
+
+
+  $db = dbConnect();
+
+  if (isset($_POST['register'])) {
+      $no_pendaftaran = "pn-".uniqid();
+      $namaLengkap = $_POST['nama'];
+      $email = $_POST['email'];
+      $nisn = $_POST['nisn'];
+      $password = $_POST['password'];
+
+      $register = register($no_pendaftaran, $nisn, $email, $namaLengkap, $password);
+  }
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,21 +26,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css">
 
     <title>Daftar</title>
   </head>
   <body>
+
+    <style type="text/css">
+      .container{
+        width: 30%;
+        margin-top: 15%;
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+        margin-top: 150px;
+        padding: 50px;
+      }
+
+      button{
+        width: 30%;
+      }
+
+      .form-group{
+        margin-top: 15px;
+      }
+    </style>
+
+
     <div class="container mt-5">
       <h4 class="text-left">Daftar</h4>
-      <form>
+      <form action="" method="POST">
         <div class="form-group">
           <label>Nama Lengkap</label>
             <div class="input-group">
               <div class="input-group-prepend"></div>
                 <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
-                  <input type="text" name="" class="form-control" placeholder="Masukan nama lengkap anda">
+                  <input type="text" name="nama" class="form-control" placeholder="Masukan nama lengkap anda" required>
             </div>
         </div>
 
@@ -29,16 +68,16 @@
             <div class="input-group">
               <div class="input-group-prepend"></div>
                 <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
-                  <input type="email" name="" class="form-control" placeholder="Masukan email anda">
+                  <input type="email" name="email" class="form-control" placeholder="Masukan email anda" required>
             </div>
         </div>
 
         <div class="form-group">
-          <label>Nomor Telepon (Whatsapp)</label>
+          <label>NISN</label>
             <div class="input-group">
               <div class="input-group-prepend"></div>
-                <div class="input-group-text"><i class="fa-brands fa-whatsapp"></i></div>
-                  <input type="number" name="" class="form-control" placeholder="Masukan nomor telepon (Whatsapp)">
+                <div class="input-group-text">NISN</div>
+                  <input type="text" name="nisn" class="form-control" placeholder="Masukan NISN Anda" required>
             </div>
         </div>
 
@@ -48,10 +87,10 @@
               <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-unlock"></i></div>
               </div>
-                <input type="password" name="" class="form-control" placeholder="Masukan password anda">
+                <input type="password" name="password" class="form-control" placeholder="Masukan password anda" required>
             </div>
         </div>
-        <button type="submit" name="" class="btn btn-primary">Login</button>
+        <button type="submit" name="register" class="btn btn-primary">Login</button>
       </form>
     </div>
 

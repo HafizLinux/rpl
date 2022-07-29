@@ -1,3 +1,61 @@
+<?php 
+
+  session_start();
+  if (isset($_SESSION['login'])) {
+    echo "
+    <script>
+      document.location.href = 'pendaftar/index.php';
+    </script>";
+  }
+
+  include 'config.php';
+  $db = dbConnect();
+
+  if (isset($_POST['login'])) {
+    $nisn = $_POST['nisn'];
+    $password = $_POST['password'];
+
+    $sqlLogin = "SELECT * FROM pendaftar WHERE nisn = '$nisn'";
+    $executeLogin = $db->query($sqlLogin);
+
+    if (mysqli_num_rows($executeLogin) > 0) {
+      $sqlLoginPass = "SELECT * FROM pendaftar WHERE nisn = '$nisn' AND password = '$password'";
+      $executeLoginPass = $db->query($sqlLoginPass);
+
+      if (mysqli_num_rows($executeLoginPass) > 0) {
+        $_SESSION['login'] = true;
+        $_SESSION['nisn'] = $nisn;
+        echo "
+          <script>
+            alert('Berhasil Login!!!');
+            document.location.href = 'pendaftar/index.php';
+          </script>";
+      }else{
+        echo "
+        <script>
+          alert('Password Salah!!!');
+          document.location.href = 'login.php';
+        </script>";
+      }
+
+    }else{
+    echo "
+      <script>
+        alert('NISN Tidak ditemukan');
+        document.location.href = 'login.php';
+      </script>
+      ";
+    }
+
+    
+
+
+
+  }
+
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,19 +65,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="login.css">
 
     <title>Login</title>
   </head>
   <body>
 
     <style type="text/css">
-      
       .container{
         width: 30%;
         margin-top: 15%;
         box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
-        margin-top: 150px;;
+        margin-top: 150px;
+        padding: 50px;
       }
 
       button{
@@ -36,13 +93,13 @@
     <div style="margin-top: 150px;">
       <div class="container mt-5">
       <h4 class="text-left">Login</h4>
-      <form>
+      <form action="" method="POST">
         <div class="form-group"></div>
-          <label>No Pendaftar</label>
+          <label>NISN</label>
             <div class="input-group">
               <div class="input-group-prepend"></div>
                 <div class="input-group-text"><i class="fas fa-user"></i></div>
-                  <input type="text" name="" class="form-control" placeholder="Masukan nomor pendaftar">
+                  <input type="text" name="nisn" class="form-control" placeholder="Masukan NISN">
             </div>
         <div class="form-group">
           <label>Password</label>
@@ -50,10 +107,10 @@
               <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-unlock"></i></div>
               </div>
-                <input type="password" name="" class="form-control" placeholder="Masukan password anda">
+                <input type="password" name="password" class="form-control" placeholder="Masukan password anda">
             </div>
         </div>
-        <button type="submit" name="" class="btn btn-primary">Login</button>
+        <button type="submit" name="login" class="btn btn-primary">Login</button>
       </form>
     </div>
     </div>
