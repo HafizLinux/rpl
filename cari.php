@@ -26,13 +26,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=""><h5>Home</h5></a>
+          <a class="nav-link active" aria-current="page" href="index.php"><h5>Home</h5></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login.php"><h5>Login</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><h5>Cari Pendaftar</h5></a>
+          <a class="nav-link" href="cari.php"><h5>Cari Pendaftar</h5></a>
         </li>
       </ul>
     </div>
@@ -100,7 +100,7 @@
 
         <tr>
             <th>Total Nilai UN</th>
-            <td><?= $assocNilai['matematika'] + $assocNilai['IPA'] + $assocNilai['b_indonesia'] +$assocNilai['b_inggris'] ?></td>
+            <td><?= $assocNilai['matematika'] + $assocNilai['IPA'] + $assocNilai['b_indonesia'] + $assocNilai['b_inggris'] ?></td>
         </tr>
 
       </table>
