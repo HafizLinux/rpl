@@ -27,30 +27,24 @@
         $_SESSION['nisn'] = $nisn;
         echo "
           <script>
-            alert('Berhasil Login!!!');
+            alert('Anda berhasil login!');
             document.location.href = 'pendaftar/index.php';
           </script>";
       }else{
         echo "
         <script>
-          alert('Password Salah!!!');
+          alert('Password anda salah!');
           document.location.href = 'login.php';
         </script>";
       }
-
     }else{
     echo "
       <script>
-        alert('NISN Tidak ditemukan');
+        alert('NISN tidak ditemukan!');
         document.location.href = 'login.php';
       </script>
       ";
     }
-
-    
-
-
-
   }
 
 
@@ -80,26 +74,37 @@
       }
 
       button{
-        width: 30%;
+        width: 100%;
+        margin-top: 10px;
       }
 
       .form-group{
         margin-top: 15px;
       }
+
+      a{
+        text-decoration: none;
+      }
+
+      a:hover{
+        text-decoration: none;
+        color: #000000;
+
     </style>
 
 
 
     <div style="margin-top: 150px;">
       <div class="container mt-5">
-      <h4 class="text-left">Login</h4>
+      <h4 class="text-center">Login</h4>
+      <hr>
       <form action="" method="POST">
         <div class="form-group"></div>
           <label>NISN</label>
             <div class="input-group">
               <div class="input-group-prepend"></div>
                 <div class="input-group-text"><i class="fas fa-user"></i></div>
-                  <input type="text" name="nisn" class="form-control" placeholder="Masukan NISN">
+                  <input type="number" name="nisn" class="form-control" placeholder="Masukan NISN">
             </div>
         <div class="form-group">
           <label>Password</label>
@@ -110,7 +115,11 @@
                 <input type="password" name="password" class="form-control" placeholder="Masukan password anda">
             </div>
         </div>
-        <button type="submit" name="login" class="btn btn-primary">Login</button>
+        <p>Belum punya akun? <a href="register.php">Daftar</a></p>
+        <center><button type="submit" name="login" class="btn btn-primary">Login</button></center>
+        <br>
+        <br>
+        <center><a href="index.php" class="text-danger">Kembali</a></center>
       </form>
     </div>
     </div>

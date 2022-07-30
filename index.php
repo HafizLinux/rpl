@@ -6,6 +6,16 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<title>Pensmas</title>
 </head>
+<style type="text/css">
+  li{
+    margin-left: 40px;
+  }
+
+  .btn{
+    width: 60%;
+    padding: 1em;
+  }
+</style>
 <body>
 
 
@@ -29,7 +39,7 @@
           <a class="nav-link" href="login.php"><h5>Login</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register.php"><h5>Cari Pendaftar</h5></a>
+          <a class="nav-link" href="cari.php"><h5>Cari Pendaftar</h5></a>
         </li>
       </ul>
     </div>
@@ -65,14 +75,14 @@
           </p>
         </div>
 
-        <div class="mt-5 mb-3">
-          <a href="register.php" class="btn btn-dark">Daftar</a>
+        <div class="btnDaftar mt-5 mb-3">
+          <a href="register.php" class="btn btn-primary">Daftar</a>
         </div>
 
     </div>
     
     <div class="col-sm-4 mb-3">
-      <img src="assets/school.png" width="100%">
+      <center><img class="deku" src="assets/school.png" width="75%"></center>
     </div>
 
   </div>

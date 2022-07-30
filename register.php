@@ -27,6 +27,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
     <title>Daftar</title>
   </head>
@@ -42,11 +43,21 @@
       }
 
       button{
-        width: 30%;
+        width: 100%;
+        margin-top: 10px;
       }
 
       .form-group{
         margin-top: 15px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+      a:hover{
+        text-decoration: none;
+        color: #000000;
       }
     </style>
 
@@ -76,7 +87,7 @@
           <label>NISN</label>
             <div class="input-group">
               <div class="input-group-prepend"></div>
-                <div class="input-group-text">NISN</div>
+                <div class="input-group-text"><i class="fa-solid fa-key"></i></div>
                   <input type="text" name="nisn" class="form-control" placeholder="Masukan NISN Anda" required>
             </div>
         </div>
@@ -90,7 +101,10 @@
                 <input type="password" name="password" class="form-control" placeholder="Masukan password anda" required>
             </div>
         </div>
-        <button type="submit" name="register" class="btn btn-primary">Login</button>
+        <center><button type="submit" name="register" class="btn btn-primary">Daftar</button></center>
+        <br>
+        <br>
+        <center><a href="index.php" class="text-danger">Kembali</a></center>
       </form>
     </div>
 

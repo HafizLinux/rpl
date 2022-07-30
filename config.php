@@ -17,7 +17,11 @@
 		$sqlCheckNisn = "SELECT * FROM pendaftar WHERE nisn = '$nisn'";
 		$executeCheckNisn = $db->query($sqlCheckNisn);
 
-		if (!mysqli_num_rows($executeCheckNisn) < 0) {
+
+		$sqlCheckEmail = "SELECT * FROM pendaftar WHERE email = '$email'";
+		$executeCheckEmail = $db->query($sqlCheckEmail);
+
+		if (mysqli_num_rows($executeCheckNisn) > 0) {
 			echo "
 				<script>
 					alert('NISN anda Telah Terdaftar');
@@ -25,39 +29,43 @@
 				</script>
 			";
 		}else{
-			$sqlRegister = "INSERT INTO pendaftar (nisn, no_pendaftar, nama_lengkap, email, password) VALUES 
-						('$nisn', '$no_pendaftaran', '$namaLengkap', '$email', '$password');";
-			$executeRegister = $db->query($sqlRegister);
-			$nilai = "nl-".uniqid();
 
-			if ($executeRegister) {
-				$sqlInsertNilai = "INSERT INTO nilai (id_nilai,nisn) VALUES ('$nilai','$nisn')";
-				$executeInsertNilai = $db->query($sqlInsertNilai);
-
-				$sqlInsertSkhun = "INSERT INTO skhun (nisn) VALUES ('$nisn')";
-				$executeInsertSkhun = $db->query($sqlInsertSkhun);
-
+			if (mysqli_num_rows($executeCheckEmail) > 0) {
 				echo "
 					<script>
-						alert('Sukses Terdaftar, silahkan login dan lengkapi data!!!');
+						alert('Email anda Telah Terdaftar');
 						document.location.href = 'index.php';
 					</script>
 				";
 			}else{
-				echo "
-					<script>
-						alert('Gagal Terdaftar, silahkan register ulang');
-						document.location.href = 'index.php';
-					</script>
-				";
+				$sqlRegister = "INSERT INTO pendaftar (nisn, no_pendaftar, nama_lengkap, email, password) VALUES 
+					('$nisn', '$no_pendaftaran', '$namaLengkap', '$email', '$password');";
+				$executeRegister = $db->query($sqlRegister);
+				$nilai = "nl-".uniqid();
+
+				if ($executeRegister) {
+					$sqlInsertNilai = "INSERT INTO nilai (id_nilai,nisn) VALUES ('$nilai','$nisn')";
+					$executeInsertNilai = $db->query($sqlInsertNilai);
+
+					$sqlInsertSkhun = "INSERT INTO skhun (nisn) VALUES ('$nisn')";
+					$executeInsertSkhun = $db->query($sqlInsertSkhun);
+
+					echo "
+						<script>
+							alert('Sukses terdaftar, Silahkan login dan lengkapi data anda!');
+							document.location.href = 'login.php';
+						</script>
+					";
+				}else{
+					echo "
+						<script>
+							alert('Gagal Terdaftar, silahkan register ulang');
+							document.location.href = 'register.php';
+						</script>
+					";
+				}
 			}
 		}
-
-
-
-		
-
-
 	}
 
 
@@ -112,8 +120,8 @@
 					</script>
 				";
 			}
-
 	}
+ 
 
 
 

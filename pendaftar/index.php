@@ -27,6 +27,18 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<title></title>
 </head>
+
+<style type="text/css">
+	li{
+		margin-left: 40px;
+	}
+
+	th{
+		text-align: center;
+	}
+
+
+</style>
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light pt-3 pb-3">
@@ -45,7 +57,7 @@
 	          <a class="nav-link active" aria-current="page" href=""><h5>Home</h5></a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="logout.php"><h5>Logout</h5></a>
+	          <a class="nav-link" href="logout.php"><h5 class="text-danger">Logout</h5></a>
 	        </li>
 	      </ul>
 	    </div>
@@ -74,14 +86,14 @@
 				</thead>
 
 				<tr>
-					<th>Biodata dan Nilai</th>
-					<td><a href="biodata.php" class="btn btn-primary">Isi Biodata dan Nilai</a></td>
+					<td><b>Biodata dan Nilai</b></td>
+					<td><center><a href="biodata.php" class="btn btn-primary">Isi Biodata dan Nilai</a></center></td>
 				</tr>
 
 
 				<tr>
-					<th>Cek Bukti Pendaftaran</th>
-					<td><a href="view.php" class="btn btn-primary">Cek Bukti Pendaftaran</a></td>
+					<td><b>Cek Bukti Pendaftaran</b></td>
+					<td><center><a href="view.php" class="btn btn-primary">Cek Bukti Pendaftaran</a></center></td>
 				</tr>
 
 			</table>			
