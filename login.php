@@ -5,14 +5,14 @@
     <script>
       document.location.href = 'pendaftar/index.php';
     </script>";
-  }
-
-  if (isset($_SESSION['petugas'])) {
+  }else if (isset($_SESSION['petugas'])) {
     echo "
     <script>
-      document.location.href = 'pendaftar/index.php';
+      document.location.href = 'petugas/index.php';
     </script>";
   }
+
+  
 
   include 'config.php';
   $db = dbConnect();

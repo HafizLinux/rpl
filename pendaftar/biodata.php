@@ -203,22 +203,22 @@
 				
 				<tr>
 			 		<th>Matematika</th>
-			 		<td><input type="number" class="form-control" name="matematika" placeholder="Matematika" value="<?= $assocNilai['matematika']?>" required></td>
+			 		<td><input type="number" class="form-control" min="0" max="100" name="matematika" placeholder="Matematika" value="<?= $assocNilai['matematika']?>" required></td>
 			 	</tr>
 
 			 	<tr>
 			 		<th>IPA</th>
-			 		<td><input type="number" class="form-control" name="ipa" placeholder="IPA" value="<?= $assocNilai['IPA']?>" required></td>
+			 		<td><input type="number" class="form-control" min="0" max="100" name="ipa" placeholder="IPA" value="<?= $assocNilai['IPA']?>" required></td>
 			 	</tr>
 
 			 	<tr>
 			 		<th>Bahasa Indonesia</th>
-			 		<td><input type="number" class="form-control" name="bindo" value="<?= $assocNilai['b_indonesia']?>" placeholder="B Indonesia" required></td>
+			 		<td><input type="number" class="form-control" min="0" max="100" name="bindo" value="<?= $assocNilai['b_indonesia']?>" placeholder="B Indonesia" required></td>
 			 	</tr>
 
 			 	<tr>
 			 		<th>Bahasa Inggris</th>
-			 		<td><input type="number" class="form-control" name="binggris" value="<?= $assocNilai['b_inggris']?>" placeholder="B Inggris" required></td>
+			 		<td><input type="number" class="form-control" min="0" max="100" name="binggris" value="<?= $assocNilai['b_inggris']?>" placeholder="B Inggris" required></td>
 			 	</tr>
 
 			</table>
