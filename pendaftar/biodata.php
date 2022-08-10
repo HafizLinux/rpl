@@ -51,6 +51,8 @@
   	$ipa = $_POST['ipa'];
   	$bindo = $_POST['bindo'];
   	$binggris = $_POST['binggris'];
+	$total = $matematika + $ipa + $bindo + $binggris;
+	$tb = $total / 4;
   	// nilai
 
   	// skhun
@@ -91,12 +93,17 @@
   	// skhun
 
 
-  	$sqlUpdatePendaftar = updatePendaftar($nisn, $namaLengkap, $ttl, $jk, $agama, $alamat, $noTelp, $asalSekolah, $namaOrtu, $matematika, $ipa, $bindo, $binggris, $picture, $no_skhun);
+  	$sqlUpdatePendaftar = updatePendaftar($nisn, $namaLengkap, $ttl, $jk, $agama, $alamat, $noTelp, $asalSekolah, $namaOrtu, $matematika, $ipa, $bindo, $binggris, $picture, $no_skhun, $tb);
 
 
   }
 
 
+  if (empty($assocskhun['foto_skhun'])) {
+	$img = "doc.png";
+  }else{
+	$img = $assocskhun["foto_skhun"];
+  }
 
 ?>
 <!DOCTYPE html>
@@ -159,7 +166,13 @@
 
 			 	<tr>
 			 		<th>Jenis Kelamin</th>
-			 		<td><input type="text" class="form-control" name="jk" placeholder="Jenis Kelamin" value="<?= $assoc['jenis_kelamin']?>" required></td>
+			 		<td>
+  						<select name="jk" class="form-control">
+							<option value="<?= $assoc['jenis_kelamin']?>"><?= $assoc['jenis_kelamin']?></option>
+							<option value="Laki-Laki">Laki-Laki</option>
+  							<option value="Perempuan">Perempuan</option>
+						</select>
+					</td>
 			 	</tr>
 
 			 	<tr>
@@ -203,22 +216,22 @@
 				
 				<tr>
 			 		<th>Matematika</th>
-			 		<td><input type="number" class="form-control" min="0" max="100" name="matematika" placeholder="Matematika" value="<?= $assocNilai['matematika']?>" required></td>
+			 		<td><input type="number" max="100" min="0" class="form-control" name="matematika" placeholder="Matematika" value="<?= $assocNilai['matematika']?>" required></td>
 			 	</tr>
 
 			 	<tr>
 			 		<th>IPA</th>
-			 		<td><input type="number" class="form-control" min="0" max="100" name="ipa" placeholder="IPA" value="<?= $assocNilai['IPA']?>" required></td>
+			 		<td><input type="number" max="100" min="0" class="form-control" name="ipa" placeholder="IPA" value="<?= $assocNilai['IPA']?>" required></td>
 			 	</tr>
 
 			 	<tr>
 			 		<th>Bahasa Indonesia</th>
-			 		<td><input type="number" class="form-control" min="0" max="100" name="bindo" value="<?= $assocNilai['b_indonesia']?>" placeholder="B Indonesia" required></td>
+			 		<td><input type="number" max="100" min="0" class="form-control" name="bindo" value="<?= $assocNilai['b_indonesia']?>" placeholder="B Indonesia" required></td>
 			 	</tr>
 
 			 	<tr>
 			 		<th>Bahasa Inggris</th>
-			 		<td><input type="number" class="form-control" min="0" max="100" name="binggris" value="<?= $assocNilai['b_inggris']?>" placeholder="B Inggris" required></td>
+			 		<td><input type="number" max="100" min="0" class="form-control" name="binggris" value="<?= $assocNilai['b_inggris']?>" placeholder="B Inggris" required></td>
 			 	</tr>
 
 			</table>
@@ -245,7 +258,7 @@
 
 			 	<tr>
 			 		<td></td>
-			 		<td><img src="skhun/<?= $assocskhun["foto_skhun"];?>" width="150px"></td>
+			 		<td><img src="skhun/<?= $img;?>" width="150px"></td>
 			 	</tr>
 
 			</table>

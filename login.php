@@ -1,77 +1,70 @@
 <?php 
-  session_start();
-  if (isset($_SESSION['login'])) {
-    echo "
-    <script>
-      document.location.href = 'pendaftar/index.php';
-    </script>";
-  }else if (isset($_SESSION['petugas'])) {
-    echo "
-    <script>
-      document.location.href = 'petugas/index.php';
-    </script>";
-  }
+
+    session_start();
+    if (isset($_SESSION['login'])) {
+      echo "
+      <script>
+        document.location.href = 'pendaftar/index.php';
+      </script>";
+    }else if (isset($_SESSION['petugas'])) {
+      echo "
+      <script>
+        document.location.href = 'petugas/index.php';
+      </script>";
+    }
 
   
 
-  include 'config.php';
-  $db = dbConnect();
+    include 'config.php';
+    $db = dbConnect();
 
-  if (isset($_POST['login'])) {
-    $nisn = $_POST['nisn'];
-    $password = $_POST['password'];
+    if (isset($_POST['login'])) {
+      $nisn = $_POST['nisn'];
+      $password = $_POST['password'];
 
-    $sqlLogin = "SELECT * FROM pendaftar WHERE nisn = '$nisn'";
-    $executeLogin = $db->query($sqlLogin);
+      $sqlLogin = "SELECT * FROM pendaftar WHERE nisn = '$nisn'";
+      $executeLogin = $db->query($sqlLogin);
 
-    if (mysqli_num_rows($executeLogin) > 0) {
-      $sqlLoginPass = "SELECT * FROM pendaftar WHERE nisn = '$nisn' AND password = '$password'";
-      $executeLoginPass = $db->query($sqlLoginPass);
+      if (mysqli_num_rows($executeLogin) > 0) {
+        $sqlLoginPass = "SELECT * FROM pendaftar WHERE nisn = '$nisn' AND password = '$password'";
+        $executeLoginPass = $db->query($sqlLoginPass);
 
-      if (mysqli_num_rows($executeLoginPass) > 0) {
-        $_SESSION['login'] = true;
-        $_SESSION['nisn'] = $nisn;
-        echo "
-          <script>
-            alert('Anda berhasil login!');
-            document.location.href = 'pendaftar/index.php';
-          </script>";
-      }else{
-        echo "
-        <script>
-          alert('Password anda salah!');
-          document.location.href = 'login.php';
-        </script>";
-      }
-    }else{
-      $sqlLoginAdmin = "SELECT * FROM admin WHERE username = '$nisn' AND password = '$password'";
-      $executeLoginAdmin = $db->query($sqlLoginAdmin);
-      
-      if (mysqli_num_rows($executeLoginAdmin) > 0) {
-        $_SESSION['petugas'] = true;
-        $_SESSION['username'] = $nisn;
-        echo "
-          <script>
-            alert('Anda berhasil login!');
-            document.location.href = 'petugas/index.php';
-          </script>";
-      }else{
-        echo "
+        if (mysqli_num_rows($executeLoginPass) > 0) {
+          $_SESSION['login'] = true;
+          $_SESSION['nisn'] = $nisn;
+          echo "
+            <script>
+              alert('Anda berhasil login!');
+              document.location.href = 'pendaftar/index.php';
+            </script>";
+        }else{
+          echo "
           <script>
             alert('Password anda salah!');
             document.location.href = 'login.php';
           </script>";
+        }
+      }else{
+        $sqlLoginAdmin = "SELECT * FROM admin WHERE username = '$nisn' AND password = '$password'";
+        $executeLoginAdmin = $db->query($sqlLoginAdmin);
+        
+        if (mysqli_num_rows($executeLoginAdmin) > 0) {
+          $_SESSION['petugas'] = true;
+          $_SESSION['username'] = $nisn;
+          echo "
+            <script>
+              alert('Anda berhasil login!');
+              document.location.href = 'petugas/index.php';
+            </script>";
+        }else{
+          echo "
+            <script>
+              alert('Password anda salah!');
+              document.location.href = 'login.php';
+            </script>";
+        }
       }
-
-      // echo "
-      //   <script>
-      //     alert('NISN tidak ditemukan!');
-      //     document.location.href = 'login.php';
-      //   </script>
-      //   ";
-
     }
-  }
 
 
 
@@ -95,7 +88,7 @@
         width: 30%;
         margin-top: 15%;
         box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
-        margin-top: 150px;
+        margin-top: 50px;
         padding: 50px;
       }
 
@@ -120,7 +113,7 @@
 
 
 
-    <div style="margin-top: 150px;">
+    <div style="margin-top: 80px;">
       <div class="container mt-5">
       <h4 class="text-center">Login</h4>
       <hr>

@@ -17,6 +17,14 @@
 	$executePendaftar = $db->query($selectPendaftar);
 	$assoc = $executePendaftar->fetch_assoc();
 
+	$assocOrtu = $assoc['nama_orangtua'];
+	if (empty($assocOrtu)) {
+		$dis = "none";
+		
+	}else{
+		$dis = "";
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +99,7 @@
 				</tr>
 
 
-				<tr>
+				<tr style="display: <?= $dis;?>;">
 					<td><b>Cek Bukti Pendaftaran</b></td>
 					<td><center><a href="view.php" class="btn btn-primary">Cek Bukti Pendaftaran</a></center></td>
 				</tr>

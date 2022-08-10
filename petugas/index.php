@@ -15,7 +15,6 @@
 	$executePendaftar = $db->query($selectPendaftar);
 	// $assoc = $executePendaftar->fetch_assoc();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>

@@ -17,6 +17,15 @@
 	$executePendaftar = $db->query($selectPendaftar);
 	$assoc = $executePendaftar->fetch_assoc();
 
+	if (empty($assoc['nama_orangtua'])) {
+		echo "
+			<script>
+				alert('Lengkapi dahulu biodata anda');
+				document.location.href = 'index.php	';
+			</script>
+		";
+	}
+
 ?>
 
 <!DOCTYPE html>
